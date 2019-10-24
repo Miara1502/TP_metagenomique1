@@ -41,6 +41,14 @@ vsearch --derep_fulllength ./result_merge/amplicon.fasta --sizeout --minuniquesi
 # Assemblage DE NOVO
 vsearch --uchime_denovo ./result_merge/amplicon.fasta --nonchimeras  ./result_merge/amplicon_nonchimeras.fasta
 
+vsearch --id 0.97 --cluster_size ./result_merge/amplicon_nonchimeras.fasta --centroids ./result_merge/centroids.fasta --relabel "OTU_"
+
+vsearch --usearch_global ./merge_result/amplicon_nonchimeras.fasta  --otutabout  ./result_merge/merged_otutabout --db ./result_merge/centroids.fasta --id 0.97
+
+
+
+
+
 
 
 
