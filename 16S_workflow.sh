@@ -43,10 +43,12 @@ vsearch --uchime_denovo ./result_merge/amplicon.fasta --nonchimeras  ./result_me
 
 vsearch --id 0.97 --cluster_size ./result_merge/amplicon_nonchimeras.fasta --centroids ./result_merge/centroids.fasta --relabel "OTU_"
 
-vsearch --usearch_global ./merge_result/amplicon_nonchimeras.fasta  --otutabout  ./result_merge/merged_otutabout --db ./result_merge/centroids.fasta --id 0.97
+vsearch --usearch_global ./result_merge/amplicon_nonchimeras.fasta  --otutabout  ./result_merge/merged_otutabout --db ./result_merge/centroids.fasta --id 0.97
 
+# 2° Annotation
+# contre l'ensemble de 16S/18S
 
-
+vsearch --usearch_global ./result_merge/centroids.fasta --db ./databases/mock_16S_18S.fasta --id 0.90 --top_hits_only --userfields query+target --userout ./result_merge/OTU_annotation.txt
 
 
 
